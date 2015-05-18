@@ -1,0 +1,23 @@
+<!-- show.erb -->
+
+<h1><%= @message.title %></h1>
+
+<p>
+  Author: <%= @message.author %>
+</p>
+
+<p>
+  <%= @message.content  %>
+</p>
+
+
+<p>
+Other posts by same author:
+
+
+<% other_message = @message.other_messages(@message.author) %>
+<%= other_message%>
+</p>
+
+<hr/>
+<a href="/messages">Back to All Messages</a>
