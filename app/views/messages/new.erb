@@ -13,6 +13,13 @@
 <% end %>
 
 <form method="post" action="/messages">
+ <div>
+    <label>Song_title:</label>
+    <input type="text" name="song_title" value="<%= @message && @message.song_title %>">
+  </div>
+
+
+
   <div>
     <label>Author:</label>
     <input type="text" name="author" value="<%= @message && @message.author %>">
