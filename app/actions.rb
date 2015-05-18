@@ -28,7 +28,8 @@ post '/messages' do
     # binding.pry
     content: params[:content],
     author:  params[:author],
-    url: params[:url]
+    url: params[:url],
+    song_title: params[:song_title]
     )
 
 
