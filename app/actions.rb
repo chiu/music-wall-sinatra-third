@@ -61,6 +61,7 @@ end
 get '/messages' do
   redirect '/login' unless user_logged_in?
   @messages = Message.all
+  binding.pry
   @votes = Vote.all
   erb :'messages/index'
 end

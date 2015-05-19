@@ -2,7 +2,7 @@ class AddMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
       t.belongs_to :user
-     t.string :song_title
+      t.string :song_title
       t.string :author
       t.string :content
       t.string :url

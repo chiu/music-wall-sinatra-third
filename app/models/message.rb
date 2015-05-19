@@ -29,12 +29,19 @@ has_many :votes
   end
 
    def upvote(user_argument)
+# binding.pry
+    if Vote.where(user_id: user_argument).where(message_id: self.id) == []
+
      @new_vote = Vote.create
      @new_vote.message_id = id
      @new_vote.user_id = user_argument
      @new_vote.save
 
    end
+
+ end
+
+ 
 
 
 

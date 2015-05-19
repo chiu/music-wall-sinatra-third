@@ -17,7 +17,7 @@
   url:  <%= message.url %> </br>
   content:  <%= message.content %> </br>
   vote up: <a href = "/messages/<%= message.id %>/vote">  click here  </a> </br>
-  display number of votes: <%= message.vote %>
+  display number of votes: <%= message.votes.count %>
 </div>
 <% end %>
 
