@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 20150519020106) do
 
   create_table "messages", force: true do |t|
-    t.string   "title"
+    t.integer  "user_id"
+    t.string   "song_title"
     t.string   "author"
     t.string   "content"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "song_title"
   end
 
   create_table "users", force: true do |t|

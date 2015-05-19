@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+has_many :messages
 
 
 #   # validates :title, presence: true, length: { maximum: 40 }
