@@ -3,6 +3,7 @@ require_relative 'user'
 class Message < ActiveRecord::Base
 
 belongs_to :user
+has_many :votes
 
   # validates :title, presence: true, length: { maximum: 40 }
   validates :content, presence: true, length: { maximum: 140 }
@@ -24,12 +25,13 @@ belongs_to :user
     # self.user_id.name
     # User(id: self.user_id).name
     # self.users.all[0].name
-    puts self.users.inspect
+    # puts self.users.inspect
   end
 
-   def upvote
+   def upvote(user_argument)
      @new_vote = Vote.create
      @new_vote.message_id = id
+     @new_vote.user_id = user_argument
      @new_vote.save
 
    end

@@ -1,7 +1,7 @@
 class Vote < ActiveRecord::Base
 
-has_many :messages
-has_many :users
+belongs_to :messages
+belongs_to :users
 
 
 #   # validates :title, presence: true, length: { maximum: 40 }

@@ -104,8 +104,8 @@ end
 
 get '/messages/:id/vote' do
   @message = Message.find params[:id]
-  @message.upvote
-  @message.user_id = get_current_user
+  @message.upvote(get_current_user.id)
+  # @message.user_id = get_current_user
   @message.save
   redirect '/messages'
 
