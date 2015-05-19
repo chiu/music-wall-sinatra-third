@@ -1,16 +1,25 @@
-<h1>Messages</h1>
- 
+<h1>Song List</h1>
+
 <% if user_logged_in? %>
-  <p>Welcome <%= get_current_user.name %></p>
+<p>Welcome <%= get_current_user.name %></p>
 <% end %>
- 
+
+
+
+
+
 <% @messages.each do |message| %>
-    <div class="message">
-        <h2><a href="/messages/<%= message.id %>"><%= message.song_title %></a> <small>(by: <%= message.author %>)</small></h2>
-        <p>
-            <%= message.content %>
-        </p>
-    </div>
+<div class="message">
+  <h2> song title:  <%= message.song_title %> </h2> 
+  singer: <a href="/messages/<%= message.id %>"><%= message.author %> </a> </br>
+  user name who posted this: <a href="/messages/<%= message.id %>"><%= message.show_user %> </a> </br>
+  user id who posted this:  <%= message.user_id %>  </br>
+  url:  <%= message.url %> </br>
+  content:  <%= message.content %> </br>
+  vote up: <a href = "/messages/<%= message.id %>/vote">  click here  </a> </br>
+</div>
 <% end %>
- 
-<a href="/messages/new">Post a message</a>
+
+
+
+<a href="/messages/new">Post a new song.</a>

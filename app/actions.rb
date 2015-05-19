@@ -59,7 +59,9 @@ post '/users' do
 end
 
 get '/messages' do
+  redirect '/login' unless user_logged_in?
   @messages = Message.all
+  @votes = Vote.all
   erb :'messages/index'
 end
 
@@ -77,8 +79,14 @@ post '/messages' do
     content: params[:content],
     author: params[:author],
     url: params[:url],
-   user_id: get_current_user.id
+    user_id: get_current_user.id
     )
+
+  @vote = Vote.new(
+   user_id: get_current_user.id,
+   message_id: @message.id
+
+   )
 
   if @message.save
     redirect '/messages'
@@ -91,4 +99,14 @@ end
 get '/messages/:id' do
   @message = Message.find params[:id]
   erb :'messages/show'
+end
+
+
+get '/messages/:id/vote' do
+  @message = Message.find params[:id]
+  @message.upvote
+  @message.user_id = get_current_user
+  @message.save
+  redirect '/messages'
+
 end

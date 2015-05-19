@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519020106) do
+ActiveRecord::Schema.define(version: 20150519094106) do
 
   create_table "messages", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 20150519020106) do
     t.string "name"
     t.string "email"
     t.string "password"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer "user_id"
+    t.integer "message_id"
   end
 
 end
