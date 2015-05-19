@@ -1,18 +1,16 @@
-<h1>All Messages</h1>
-<hr/>
-
-<% @messages.each do |message| %>
-  <div class="message">
-   <!--  <h3><%= message.title %> <small>(by: <%= message.author %>)</small></h3> -->
-   <!-- <h3><a href="/messages/<%= message.id %>"><%= message.title %></a> <small>(by: <%= message.author %>)</small></h3> -->
-       <h3>song title: <%= message.song_title %> posted by:   <a href="/messages/<%= message.id %>">    <%= message.author %></a> <small>( url: <%= message.url %>)</small></h3> 
-       <h4>created at: <%= message.created_at %> and updated at: <%= message.updated_at %></h1>
-    <p>
-      <%= message.content %>
-    </p>
-  </div>
+<h1>Messages</h1>
+ 
+<% if user_logged_in? %>
+  <p>Welcome <%= get_current_user.name %></p>
 <% end %>
-
-
-<hr/>
-<a href="/messages/new">Post a message... It's FREE (for now)!</a>
+ 
+<% @messages.each do |message| %>
+    <div class="message">
+        <h2><a href="/messages/<%= message.id %>"><%= message.title %></a> <small>(by: <%= message.author %>)</small></h2>
+        <p>
+            <%= message.content %>
+        </p>
+    </div>
+<% end %>
+ 
+<a href="/messages/new">Post a message</a>
