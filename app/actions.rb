@@ -23,6 +23,7 @@ post '/login' do
  
   if @user
     session[:email] = @user.email
+    # session[:password] = @user.password
     redirect '/'
   end
 end

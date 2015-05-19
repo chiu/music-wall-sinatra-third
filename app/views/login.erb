@@ -1,0 +1,42 @@
+<h1>Post a Message</h1>
+<hr/>
+
+<% if @user && @user.errors.any? %>
+  <div>
+    <strong>Some issues with your message, please fix them:</strong>
+    <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form method="post" action="/login">
+<!--  <div>
+    <label> name </label>
+    <input type="text" name="name" value="<%= @user && @user.name%>">
+  </div>
+ -->
+
+
+  <div>
+    <label> email </label>
+    <input type="text" name="email" value="<%= @user && @user.email %>">
+  </div>
+<!--   <div>
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= @user && @user.title %>">
+  </div> -->
+  <div>
+    <label> password </label>
+    <input type="text" name="password" value="<%= @user && @user.password %>">
+  </div>
+
+  
+
+
+  <div>
+    <input type="submit" value="Submit" >
+  </div>
+</form>

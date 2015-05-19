@@ -1,4 +1,4 @@
-<h1>Post a Message</h1>
+<h1>Register from here: </h1>
 <hr/>
 
 <% if @user && @user.errors.any? %>
@@ -13,15 +13,20 @@
 <% end %>
 
 <form method="post" action="/users">
+
  <div>
-    <label>Song_title:</label>
+    <label>name </label>
+    <input type="text" name="name" value="<%= @user && @user.name %>">
+  </div>
+ <div>
+    <label>email </label>
     <input type="text" name="email" value="<%= @user && @user.email %>">
   </div>
 
 
 
   <div>
-    <label>Author:</label>
+    <label>password: </label>
     <input type="text" name="password" value="<%= @user && @user.password %>">
   </div>
 
