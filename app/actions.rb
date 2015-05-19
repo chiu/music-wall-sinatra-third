@@ -66,14 +66,12 @@ get '/messages/new' do
   erb :'messages/new'
 end
  
-get '/messages/:id' do
-  @message = Message.find params[:id]
-  erb :'messages/show'
-end
+
  
-post '/messages' do
+post '/messages/new' do
   @message = Message.new(
     title: params[:title],
+    song_title: params[:song_title],
     content: params[:content],
     author: params[:author]
   )
@@ -82,4 +80,10 @@ post '/messages' do
   else
     erb :'messages/new'
   end
+end
+
+
+get '/messages/:id' do
+  @message = Message.find params[:id]
+  erb :'messages/show'
 end
