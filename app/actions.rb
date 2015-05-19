@@ -45,7 +45,7 @@ end
  
 post '/users' do
   @user = User.new(
-    # name: params[:name],
+    name: params[:name],
     password: params[:password],
     email: params[:email]
   )

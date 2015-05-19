@@ -2,38 +2,34 @@
 <hr/>
 
 <% if @user && @user.errors.any? %>
-  <div>
-    <strong>Some issues with your user, please fix them:</strong>
-    <ul>
-      <% @user.errors.full_users.each do |user| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<div>
+  <strong>Some issues with your user, please fix them:</strong>
+  <ul>
+    <% @user.errors.full_users.each do |user| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
 
 <form method="post" action="/users">
 
  <div>
-    <label>name </label>
-    <input type="text" name="name" value="<%= @user && @user.name %>">
-  </div>
- <div>
-    <label>email </label>
-    <input type="text" name="email" value="<%= @user && @user.email %>">
-  </div>
+  <label>name </label>
+  <input type="text" name="name" value="<%= @user && @user.name %>">
+</div>
 
+<div>
+  <label>email </label>
+  <input type="text" name="email" value="<%= @user && @user.email %>">
+</div>
 
+<div>
+  <label>password: </label>
+  <input type="text" name="password" value="<%= @user && @user.password %>">
+</div>
 
-  <div>
-    <label>password: </label>
-    <input type="text" name="password" value="<%= @user && @user.password %>">
-  </div>
-
-
-
-
-  <div>
-    <input type="submit" value="Submit" >
-  </div>
+<div>
+  <input type="submit" value="Submit" >
+</div>
 </form>

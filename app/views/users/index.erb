@@ -1,15 +1,15 @@
-<h1>List of users</h1>
- 
+<h1>List of users 2</h1>
+
 <% if user_logged_in? %>
-  <p>Welcome <%= get_current_user.name %></p>
+<p>Welcome <%= get_current_user.name %></p>
 <% end %>
- 
+
 <% @users.each do |user| %>
-    <div class="user">
-        <h2><a href="/users/<%= user.id %>"><%= user.email %></a> <small>(by: <%= user.password %>)</small></h2>
-        <p>
-           "hi"        </p>
-    </div>
+<div class="user">
+<h2><a href="/users/<%= user.id %>"> email: <%= user.email %> name: <%= user.name %></a> </h2>
+  <small>( password: <%= user.password %>)</small>
+  <p> <%= user.name %>  </p>
+</div>
 <% end %>
- 
+
 <a href="/users/new">Post a user</a>
