@@ -8,7 +8,8 @@
 <div class="message">
   <h2> song title:  <%= message.song_title %> </h2> 
   singer: <a href="/messages/<%= message.id %>"><%= message.author %> </a> </br>
-  user name who posted this: <a href="/messages/<%= message.id %>"><%= message.show_user %> </a> </br>
+  user name who posted this: <a href="/messages/<%= message.user_id %>"><%= message.show_original_poster %> </a> </br>
+
   user id who posted this:  <%= message.user_id %>  </br>
   url:  <%= message.url %> </br>
   content:  <%= message.content %> </br>

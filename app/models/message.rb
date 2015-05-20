@@ -25,25 +25,32 @@ class Message < ActiveRecord::Base
   end
 
 
-  def show_user
-  # self.user_id.name
-  # User(id: self.user_id).name
-  # self.users.all[0].name
-  # puts self.users.inspect
+  def show_original_poster
+ 
+    unless user_id == nil
+    @original_poster = User.find(self.user_id).name
+       # @original_poster = User.where(id: self.user_id)[0].name
+   puts "hi"
+   puts @original_poster
+   puts "hi"
+   return @original_poster
+ else
+  return "no user found"
+ end
+ end
+
+ def upvote(user_argument)
+  unless has_user_upvoted_before(user_argument)
+
+    @new_vote = Vote.create
+    @new_vote.message_id = id
+    @new_vote.user_id = user_argument
+    @new_vote.save
   end
-
-  def upvote(user_argument)
-    unless has_user_upvoted_before(user_argument)
-
-      @new_vote = Vote.create
-      @new_vote.message_id = id
-      @new_vote.user_id = user_argument
-      @new_vote.save
-    end
-  end
+end
 
 
-  def has_user_upvoted_before(user_argument)
+def has_user_upvoted_before(user_argument)
     # Vote.where(user_id: user_argument, message_id: id).any?
     votes.where(user_id: user_argument).any?
   end
