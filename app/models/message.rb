@@ -18,10 +18,10 @@ def other_messages(current_author)
   message_record = []
   output_string = ""
   message_record = Message.where(author: current_author)
-  message_record.each do |element|
-    output_string << " next message: \n" << element.content
-  end
-  return output_string
+  # message_record.each do |element|
+    # output_string << " next message: \n" << element.content
+  # end
+  # return output_string
 end
 
 

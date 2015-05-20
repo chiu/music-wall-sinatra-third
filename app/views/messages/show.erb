@@ -3,7 +3,7 @@
 <h1><%= @message.song_title %></h1>
 
 <p>
-  Author: <%= @message.author %>
+  Singer: <%= @message.author %>
 </p>
 
 <p>
@@ -12,11 +12,16 @@
 
 
 <p>
-Other posts by same author:
+Other songs by same singer:
 
 
-<% other_message = @message.other_messages(@message.author) %>
-<%= other_message%>
+<% @message.other_messages(@message.author).each do |element| %>
+
+<p>
+ <%= element.song_title %>
+</p>
+<% end %>
+
 </p>
 
 <hr/>

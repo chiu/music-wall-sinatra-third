@@ -6,6 +6,7 @@ helpers do
   def get_current_user
     if user_logged_in?
       User.find_by_email(session[:email])
+
     end
   end
 end
@@ -15,7 +16,11 @@ get '/' do
 end
 
 get '/login' do
-  erb :'login'
+   unless user_logged_in?
+    erb :'login' 
+  else
+    redirect '/messages'
+  end
 end
 
 post '/login' do
@@ -24,9 +29,11 @@ post '/login' do
   if @user
     session[:email] = @user.email
     # session[:password] = @user.password
+    session[:id] = @user.id
+    session[:name] = @user.name
     redirect '/'
   else
-    # redirect '/users'
+    redirect '/users'
   end
 end
 
@@ -79,11 +86,11 @@ post '/messages' do
     content: params[:content],
     author: params[:author],
     url: params[:url],
-    user_id: get_current_user.id
+    user_id: session[:id]
     )
 
   @vote = Vote.new(
-   user_id: get_current_user.id,
+   user_id: session[:id],
    message_id: @message.id
 
    )
@@ -104,7 +111,8 @@ end
 
 get '/messages/:id/vote' do
   @message = Message.find params[:id]
-  @message.upvote(get_current_user.id)
+  # @message.upvote(get_current_user.id)
+  @message.upvote(session[:id])
   # @message.user_id = get_current_user
   @message.save
   redirect '/messages'
