@@ -4,10 +4,6 @@
 <p>Welcome <%= get_current_user.name %></p>
 <% end %>
 
-
-
-
-
 <% @messages.each do |message| %>
 <div class="message">
   <h2> song title:  <%= message.song_title %> </h2> 
@@ -16,8 +12,14 @@
   user id who posted this:  <%= message.user_id %>  </br>
   url:  <%= message.url %> </br>
   content:  <%= message.content %> </br>
-  vote up: <a href = "/messages/<%= message.id %>/vote">  click here  </a> </br>
-  display number of votes: <%= message.votes.count %>
+  vote up: 
+
+  <% if !message.has_user_upvoted_before(get_current_user.id) %>
+    <a href = "/messages/<%= message.id %>/vote">  click here  </a> 
+  <% end %>
+
+</br>
+display number of votes: <%= message.votes.count %>
 </div>
 <% end %>
 

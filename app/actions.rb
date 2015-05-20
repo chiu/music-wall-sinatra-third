@@ -61,7 +61,7 @@ end
 get '/messages' do
   redirect '/login' unless user_logged_in?
   @messages = Message.all
-  binding.pry
+  # binding.pry
   @votes = Vote.all
   erb :'messages/index'
 end
@@ -70,7 +70,6 @@ get '/messages/new' do
   @message = Message.new
   erb :'messages/new'
 end
-
 
 
 post '/messages' do
